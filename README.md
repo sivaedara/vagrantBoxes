@@ -23,6 +23,10 @@ Here I am using mobaxterm tool, irrespective of tool make sure to use private ke
 Keys will be available under 
 xxxxxx\BuildServer\.vagrant\machines\default\virtualbox\private_key
 
+To run some commans vagrant user might not be good enough so make sure to switch to root user
+
+*su root*
+
 
 Note: 
     - Doesn't require any background knowledge about vagrant or virtual box.
