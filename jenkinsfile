@@ -1,10 +1,23 @@
+// Declare any variables if required
+
 pipeline {
     agent any
+    environment {
+        def BUILDVERSION = sh(script: "echo `date +%s`", returnStdout: true).trim()
+    }
+    
     stages {
-        stage('Welcome Step') {
+        stage('checkout') {
             steps { 
-                echo 'Welcome to jenkins test'
+                checkout scm
             }
         }
+
+        stage('list all files') {
+            steps { 
+                sh "ls -lrt"
+            }
+        }
+
     }
 }
