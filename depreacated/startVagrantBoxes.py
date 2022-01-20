@@ -12,7 +12,7 @@ def startVagrantBoxes():
     for folder in foldersList:
         os.chdir(folder)
         print ("\n\nstarting vagrant box from "+folder)
-        os.system("vagrant up")
+        os.system("vagrant destroy")
         # to stop vagrant boxes update command with "vagrant halt"
         # to initiate vagrant boxes use command "vagrant init"
         os.chdir(cwd)

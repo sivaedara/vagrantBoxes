@@ -1,33 +1,76 @@
-# vagrantBoxes
-With out logging into any cloud servers we are trying to create VM's in our local machines using vagrant and virtual box.
+# Build linux servers
 
-Before running this scripts make sure to have virtual box and Vagrant installed in your windows PC.
+This command has to be run from same directory and it will start up 3 servers
+one buildserver and two app/webservers we used for testing 
+`vagrant up`
 
-We are creating 3 linux servers in our local, one build server and 2 app servers.
+# Install ansible in buildserver
 
-Clone repo to your local machine and run command from each of the folders using any terminal.
-    vagrant up
+we can ssh to buildserver using 
+`vagrant ssh buildserver`
+or we can use mobaxterm to connect.
 
-Add this section to your host file "C:\Windows\System32\drivers\etc"
+## Update root password
+`sudo passwd root`
 
-## Begin Local Vagrant VM's  ##
-# externalIP  hostname         ExternalIP        port 
-127.0.0.99    buildserver      # 192.166.70.99   2299
-127.0.0.23    devapp1          # 192.166.70.23   2223
-127.0.0.24    devapp2          # 192.166.70.24   2224
-## End ##
+## Switch user to root
+`su root`
+
+## Update system
+`sudo apt update`
+
+## Install ansible
+`sudo apt install ansible`
+
+## Update host file in buildserver
+edit host file and add other server details ( this has to be in all servers)
+`vi /etc/hosts`
+
+192.168.56.100 buildserver
+192.168.56.102 web01
+192.168.56.103 web02
 
 
-### SSH to boxes ###
-Here I am using mobaxterm tool, irrespective of tool make sure to use private keys and use respective port numbers.
-Keys will be available under 
-xxxxxx\BuildServer\.vagrant\machines\default\virtualbox\private_key
+## Create keys (switch to vagrant user and run)
+`ssh-keygen`
+After running this command press enter with out proving any inputs.
+Note: Files can be edited when we are using root user only.
 
-To run some commans vagrant user might not be good enough so make sure to switch to root user
+## ssh copy id (switch to vagrant user and run)
+this command will helps ansible to talk to other servers ( web01/web02) with out asking for passwords
+`ssh-copy-id web01`
+`ssh-copy-id web02`
+enter "yes" and password for vagrant user ( password is vagrant)
 
-*su root*
+## Verify connetion (switch to vagrant user and run)
+`ansible webservers -i hosts -m command -a hostname -v`
 
 
-Note: 
-    - Doesn't require any background knowledge about vagrant or virtual box.
-    - Need to run "vagrant up" command when ever you want to start the vm. "vagrant halt" command to shutdown system
+## Install jenkins on buildserver ( this will install java and jenkins)
+`wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -`
+
+`sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'`
+
+`sudo apt install default-jre`
+
+`sudo apt install jenkins`
+
+`sudo systemctl start jenkins`
+
+`sudo apt update`
+
+`sudo systemctl enable jenkins`
+
+`sudo ufw allow OpenSSH`
+
+`sudo ufw enable`
+
+`sudo ufw allow 8080`
+
+`sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
+
+run http://localhost:8080
+
+
+
+
