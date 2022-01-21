@@ -1,0 +1,26 @@
+---
+- name: "Install Common packages"
+  apt: name={{ item }} state=latest  update_cache=yes
+  with_items:
+   - pydf
+   - tree
+   - open-vm-tools
+   - httpd
+
+- name: "enable httpd"
+  service:
+    name: "httpd"
+    enabled: yes
+
+- name: " start httpd service"
+  service: 
+    name: "httpd"
+    state: started
+
+- name: "add firewall rule"
+  firewalld: 
+    port: "8000/tcp"
+    permanent: yes
+    state: enabled
+    immediate: yes
+  notify: "Restart firewalld"
