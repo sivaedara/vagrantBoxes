@@ -87,3 +87,17 @@ https://community.talend.com/s/article/How-do-I-change-the-Jenkins-service-accou
 sudo chown -R vagrant:vagrant /var/lib/jenkins
 sudo chown -R vagrant:vagrant /var/cache/jenkins
 sudo chown -R vagrant:vagrant /var/log/jenkins
+
+
+
+## Docker
+docker run -it --rm --entrypoint=/bin/bash  localdeploy:v1 
+
+sudo docker build -t localdeploy:v1 .
+
+
+docker run -it   localdeploy:v1 
+
+sudo docker run -dit --name localdeploytest -p 8085:80  localdeploy:v1 
+
+sudo docker rm -f $(sudo docker ps -a |awk '{print $1}')
