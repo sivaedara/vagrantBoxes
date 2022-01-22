@@ -28,7 +28,7 @@ pipeline {
         stage ('Run playbooks'){
             steps{
                 echo "Installing Docker"
-                sh "ansible-playbook -i ./ansible/inventories/hosts ./ansible/installDocker.yaml"
+                sh "export ANSIBLE_FORCE_COLOR=true && ansible-playbook -i ./ansible/inventories/hosts ./ansible/installDocker.yaml"
             }
         }
 
