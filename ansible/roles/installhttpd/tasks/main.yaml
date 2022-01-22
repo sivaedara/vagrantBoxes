@@ -1,27 +1,25 @@
 ---
-- name: "wait 300 seconds"
+- name: "wait 300 seconds as timeout"
   wait_for_connection:
           delay: 5
           sleep: 5
           timeout: 300
 
-
+# Installing apache2 
 - name: "Install command packages"
   apt: name={{ item }} state=latest update_cache=yes
   with_items:
           - apache2
   become: yes
 
-
-
-- name: "enable service"
+# Enabling  apache2 service
+- name: "enable apache2 service"
   service:
           name: apache2
           enabled: yes
   become: yes
 
-
-
+# Restarting apache2 service
 - name: " restart service"
   service:
           name: apache2

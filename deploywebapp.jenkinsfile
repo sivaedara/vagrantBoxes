@@ -1,7 +1,13 @@
 // Declare any variables if required
 
 pipeline {
+    
     agent any
+    
+    options {
+        ansiColor('xterm')
+    }
+
     environment {
         def BUILDVERSION = sh(script: "echo `date +%s`", returnStdout: true).trim()
     }
