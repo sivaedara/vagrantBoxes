@@ -27,7 +27,7 @@ pipeline {
 
         stage ('Run playbooks'){
             steps{
-                echo "Installing httpd"
+                echo "Deploying web application"
                 sh "ansible-playbook -i ./ansible/inventories/hosts ./ansible/deployApplication.yaml"
             }
         }
