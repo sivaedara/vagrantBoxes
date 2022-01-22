@@ -21,7 +21,8 @@ pipeline {
 
         stage ('Run playbooks'){
             steps{
-                echo "cmg to run playbooks"
+                echo "Installing httpd"
+                sh "ansible-playbook -i ./ansible/inventories/hosts ./ansible/installhttpd.yaml"
             }
         }
 

@@ -1,0 +1,32 @@
+// Declare any variables if required
+
+pipeline {
+    agent any
+    environment {
+        def BUILDVERSION = sh(script: "echo `date +%s`", returnStdout: true).trim()
+    }
+
+    stages {
+        stage('checkout') {
+            steps { 
+                checkout scm
+            }
+        }
+
+        stage('list all files') {
+            steps { 
+                sh "ls -lrt"
+            }
+        }
+
+        stage ('Run playbooks'){
+            steps{
+                echo "Installing httpd"
+                sh "ansible-playbook -i ./ansible/inventories/hosts ./ansible/deployApplication.yaml"
+            }
+        }
+
+        //stage ('clean workspace')
+
+    }
+}

@@ -1,0 +1,16 @@
+---
+- name: "wait 300 seconds"
+  wait_for_connection:
+          delay: 5
+          sleep: 5
+          timeout: 300
+
+# Copy index file to /var/www/cgi
+- name: "copy index file"
+  copy:
+          src: index.html
+          dest: /var/www/html/index.html
+          mode: '0777'
+
+- name: "Run a cat command for testing"
+  command: cat /var/www/cgi/index.html

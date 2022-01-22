@@ -1,26 +1,40 @@
 ---
-- name: "Install Common packages"
-  apt: name={{ item }} state=latest  update_cache=yes
+- name: "wait 300 seconds"
+  wait_for_connection:
+          delay: 5
+          sleep: 5
+          timeout: 300
+
+
+- name: "Install command packages"
+  apt: name={{ item }} state=latest update_cache=yes
   with_items:
-   - pydf
-   - tree
-   - open-vm-tools
-   - httpd
+          - apache2
+  become: yes
 
-- name: "enable httpd"
+
+
+- name: "enable service"
   service:
-    name: "httpd"
-    enabled: yes
+          name: apache2
+          enabled: yes
+  become: yes
 
-- name: " start httpd service"
-  service: 
-    name: "httpd"
-    state: started
 
-- name: "add firewall rule"
-  firewalld: 
-    port: "8000/tcp"
-    permanent: yes
-    state: enabled
-    immediate: yes
-  notify: "Restart firewalld"
+
+- name: " restart service"
+  service:
+          name: apache2
+          enabled: yes
+
+  become: true
+
+
+#- name: "add firewalld rule"
+#  firewalld:
+#          port: "8080/tcp"
+#          permanent: yes
+#          state: enabled
+#          immediate: yes
+#  notify: "restart firewalld"
+#  become: true
