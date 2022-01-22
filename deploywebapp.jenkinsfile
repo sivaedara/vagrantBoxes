@@ -22,7 +22,7 @@ pipeline {
         stage ('Run playbooks'){
             steps{
                 echo "Installing httpd"
-                sh 'sudo -H -u vagrant bash -c "ansible-playbook -i ./ansible/inventories/hosts ./ansible/deployApplication.yaml"'
+                sh "ansible-playbook -i ./ansible/inventories/hosts ./ansible/deployApplication.yaml"
             }
         }
 

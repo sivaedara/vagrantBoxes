@@ -78,3 +78,12 @@ Now we can create new creds for new user.
 #### Install plugins in jenkins
 install "Build Pipeline" and "Generic Webhook Trigger" plugins
 
+
+
+####
+Update jenkins user to vagrant user
+https://community.talend.com/s/article/How-do-I-change-the-Jenkins-service-account-user-O4Qhk?language=en_US#:~:text=To%20change%20the%20service%2C%20open,to%20the%20user%20you%20want.
+
+sudo chown -R vagrant:vagrant /var/lib/jenkins
+sudo chown -R vagrant:vagrant /var/cache/jenkins
+sudo chown -R vagrant:vagrant /var/log/jenkins
