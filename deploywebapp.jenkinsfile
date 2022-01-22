@@ -21,10 +21,8 @@ pipeline {
 
         stage ('Run playbooks'){
             steps{
-                ehcho "current user is "
-                sh "whoami"
                 echo "Installing httpd"
-                sh "ansible-playbook -i ./ansible/inventories/hosts ./ansible/deployApplication.yaml"
+                sh 'sudo -H -u vagrant bash -c "ansible-playbook -i ./ansible/inventories/hosts ./ansible/deployApplication.yaml"'
             }
         }
 
