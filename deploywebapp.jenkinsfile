@@ -28,7 +28,7 @@ pipeline {
         stage ('Run playbooks'){
             steps{
                 echo "Deploying web application"
-                sh "ansible-playbook -i ./ansible/inventories/hosts ./ansible/deployApplication.yaml"
+                sh "export ANSIBLE_FORCE_COLOR=true && ansible-playbook -i ./ansible/inventories/hosts ./ansible/deployApplication.yaml"
             }
         }
 
