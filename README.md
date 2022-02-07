@@ -38,8 +38,8 @@ Note: Files can be edited when we are using root user only.
 
 ### ssh copy id (switch to vagrant user and run)
 this command will helps ansible to talk to other servers ( web01/web02) with out asking for passwords
-`ssh-copy-id web01`
-`ssh-copy-id web02`
+`ssh-copy-id vagrant@web01`
+`ssh-copy-id vagrant@web02`
 enter "yes" and password for vagrant user ( password is vagrant)
 
 ### Verify connetion (switch to vagrant user and run)
