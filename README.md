@@ -44,7 +44,7 @@ enter "yes" and password for vagrant user ( password is vagrant)
 
 ### change directory to /opt and create a sample host file for testing.
 `cd /opt`
-create a new file `vi hosts' 
+create a new file `vi hosts`
 contents will be same as inventory/hosts file https://github.com/sivaedara/vagrantBoxes/tree/master/ansible/inventories/hosts
 
 ### Verify connetion (switch to vagrant user and run)
