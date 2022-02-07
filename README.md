@@ -38,9 +38,14 @@ Note: Files can be edited when we are using root user only.
 
 ### ssh copy id (switch to vagrant user and run)
 this command will helps ansible to talk to other servers ( web01/web02) with out asking for passwords
-`ssh-copy-id vagrant@web01`
-`ssh-copy-id vagrant@web02`
+`ssh-copy-id web01`
+`ssh-copy-id web02`
 enter "yes" and password for vagrant user ( password is vagrant)
+
+### change directory to /opt and create a sample host file for testing.
+`cd /opt`
+create a new file `vi hosts' 
+contents will be same as inventory/hosts file https://github.com/sivaedara/vagrantBoxes/tree/master/ansible/inventories/hosts
 
 ### Verify connetion (switch to vagrant user and run)
 `ansible webservers -i hosts -m command -a hostname -v`
