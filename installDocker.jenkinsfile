@@ -22,6 +22,7 @@ pipeline {
         stage('list all files') {
             steps { 
                 sh "ls -lrt"
+                sh "ansible --version"
             }
         }
 
@@ -29,6 +30,7 @@ pipeline {
             steps{
                 echo "Installing Docker"
                 sh "export ANSIBLE_FORCE_COLOR=true && ansible-playbook -i ./ansible/inventories/hosts ./ansible/installDocker.yaml"
+                sh " docker build --sdbsdBDSB "
             }
         }
 
