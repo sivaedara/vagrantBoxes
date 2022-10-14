@@ -8,6 +8,7 @@
 # Installing apache2 
 - name: "Install command packages"
   shell: yum install apache2 -y
+  become: yes
 
 
 # Enabling  apache2 service
