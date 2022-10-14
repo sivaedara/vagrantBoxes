@@ -10,14 +10,14 @@
   apt: name={{ item }} state=latest update_cache=yes
   with_items:
           - apache2
-  become: yes
+
 
 # Enabling  apache2 service
 - name: "enable apache2 service"
   service:
           name: apache2
           enabled: yes
-  become: yes
+
 
 # Restarting apache2 service
 - name: " restart service"
@@ -25,7 +25,6 @@
           name: apache2
           enabled: yes
 
-  become: true
 
 
 #- name: "add firewalld rule"
