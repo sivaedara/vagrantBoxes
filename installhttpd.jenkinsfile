@@ -28,7 +28,7 @@ pipeline {
         stage ('Run playbooks'){
             steps{
                 echo "Installing httpd"
-                sh "export ANSIBLE_FORCE_COLOR=true &&  ansible-playbook -i ./ansible/inventories/hosts ./ansible/installhttpd.yaml --extra-vars "ansible_sudo_pass=sivaedara""
+                sh "export ANSIBLE_FORCE_COLOR=true &&  ansible-playbook -i ./ansible/inventories/hosts ./ansible/installhttpd.yaml --extra-vars ansible_sudo_pass=sivaedara"
             }
         }
 
