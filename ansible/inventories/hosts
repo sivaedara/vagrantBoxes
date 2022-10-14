@@ -1,2 +1,2 @@
 [webservers]
-localhost
+masternode ansible_user=siva
