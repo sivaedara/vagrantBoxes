@@ -1,2 +1,4 @@
 [webservers]
 masternode ansible_user=siva
+workernode1 ansible_user=siva
+workernode2 ansible_user=siva
