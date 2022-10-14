@@ -1,2 +1,2 @@
 [webservers]
-masternode user=siva
+masternode ansible_user=siva
