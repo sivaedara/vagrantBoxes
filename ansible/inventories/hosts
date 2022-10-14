@@ -1,8 +1,2 @@
-[webservers]
-web01
-web02
-
 [all]
-buildserver
-web01
-web02
+masternode
