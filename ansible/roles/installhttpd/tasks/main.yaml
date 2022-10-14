@@ -7,7 +7,9 @@
 
 # Installing apache2 
 - name: "Install command packages"
-  shell: yum install httpd -y
+  yum:
+    name: httpd
+    state: latest
   become: yes
 
 
