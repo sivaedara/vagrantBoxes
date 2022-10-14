@@ -13,16 +13,14 @@
 
 # Enabling  apache2 service
 - name: "enable apache2 service"
-  service:
-          name: apache2
-          enabled: yes
+  shell: systemctl enable httpd
+  become: yes
 
 
 # Restarting apache2 service
 - name: " restart service"
-  service:
-          name: apache2
-          enabled: yes
+  shell: systemctl restart httpd
+  become: yes
 
 
 
